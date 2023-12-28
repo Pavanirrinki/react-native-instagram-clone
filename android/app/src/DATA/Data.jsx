@@ -1,0 +1,25 @@
+export const data =[{
+    id:"1",
+    url:"http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    poster:"https://storage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg"
+},{
+    id:"2",
+    url:"http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    poster:"https://storage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg"
+},{
+    id:"3",
+    url:"http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    poster:"https://storage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg"
+},{
+    id:"4",
+    url:"http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    poster:"https://storage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg"
+},{
+    id:"5",
+    url:"http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    poster:"https://storage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg"
+},{
+    id:"6",
+    url:"http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    poster:"https://storage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg"
+},]
