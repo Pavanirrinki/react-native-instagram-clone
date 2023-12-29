@@ -54,7 +54,7 @@ export default function App( {navigation}) {
         </View>
       </View>
       
-      <Stories />
+      <Stories navigation={navigation}/>
     
       <FlatList
       ref={flatListRef}

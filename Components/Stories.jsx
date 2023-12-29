@@ -2,7 +2,7 @@ import { StyleSheet, Text, View,Image, ScrollView,TouchableOpacity} from 'react-
 import React from 'react';
 import Entypo from 'react-native-vector-icons/Entypo';
 const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
-const Stories = () => {
+const Stories = ({navigation}) => {
   return (
     <ScrollView
       horizontal={true}
@@ -10,7 +10,7 @@ const Stories = () => {
       style={{paddingVertical: 20}}>
       {data.map((data, index) => {
         return (
-          <TouchableOpacity
+          <TouchableOpacity onPress={() => navigation.navigate('STORIES')}
             key={index} style={{height:110}}>
             <View
               style={{
