@@ -5,25 +5,37 @@ const userSchema = new mongoose.Schema({
     type:String,
     requied:true,
     trim: true,
-    minLength: 5,
     unique: true,
    },
    username:{
     type:String,
     requied:true,
-    minLength:3,
-    maxLength: 10
    },
   password:{
     type:String,
     requied:true,
-    minLength:3,
-    maxLength: 20
-   },
+ },
    mobilenumber:{
     type:Number,
     requied:true
- }
+ },
+ followers:[{
+   type: mongoose.Schema.Types.ObjectId,
+   ref:"User"
+ }],
+ following:[{
+   type: mongoose.Schema.Types.ObjectId,
+   ref:"User"
+ }],
+ uploaded_posts:[{
+  type: mongoose.Schema.Types.ObjectId,
+  ref:"Post"
+ }],
+ stories:[{
+  type: mongoose.Schema.Types.ObjectId,
+  ref:"Stories"
+}]
+ 
   });
   const User = mongoose.model('User', userSchema);
   module.exports = User;

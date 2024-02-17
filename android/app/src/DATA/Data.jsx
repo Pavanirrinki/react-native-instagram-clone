@@ -1,10 +1,10 @@
 export const data =[{
     id:"1",
-    url:"http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    url:"https://storage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
     poster:"https://storage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg"
 },{
     id:"2",
-    url:"http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    url:"https://storage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
     poster:"https://storage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg"
 },{
     id:"3",

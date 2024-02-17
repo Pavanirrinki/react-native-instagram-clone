@@ -1,17 +1,18 @@
 import { StyleSheet, Text, View,TextInput,Button } from 'react-native'
 import React,{useState,useEffect} from 'react'
-
+import axios from 'axios';
+import { API } from '../Pages/API';
 const Signup = ({navigation}) => {
   const [email,setEmail] = useState('');
   const [password,setPassword] = useState('');
   const [username,setUsername] = useState('');
   const [mobile,setMobile] = useState('');
+
   function SignupHandler(){
-    console.log(email,password,mobile,username);
-    setEmail('');
-    setPassword("");
-    setUsername("");
-    setMobile("")
+   axios.post(API+"signup",{email,password,username,mobilenumber:mobile}).
+   then((res)=>{console.log(res.data);setEmail('');setMobile('');setPassword('');setUsername('');navigation.navigate("LOGIN")}).
+   catch((error)=>console.log(error.message))
+
   }
   return (
     <View style={styles.container}>

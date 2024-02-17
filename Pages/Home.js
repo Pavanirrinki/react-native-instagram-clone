@@ -8,13 +8,16 @@ import { Image } from 'react-native-elements';
 import PostDescription from '../Components/PostDescription';
 import Stories from '../Components/Stories';
 
+
 const { height: screenHeight } = Dimensions.get('window');
 const videoComponentHeight = screenHeight / 2;
 
 export default function App( {navigation}) {
   const flatListRef = useRef(null);
   const [currentPlayingIndex, setCurrentPlayingIndex] = useState(-1);
-  
+  const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.svg'];
+  const videoExtensions = ['.mp4', '.webm', '.ogg', '.avi', '.mov']; 
+
   const onViewableItemsChanged = ({ viewableItems }) => {
     // console.log("viewable items",viewableItems)
     if (viewableItems.length > 0) {
@@ -26,27 +29,39 @@ export default function App( {navigation}) {
     }
   };
   
-  const renderVideoItem = ({ item,index }) => (
-   
-   <><View style={{ height: videoComponentHeight, padding: 0, margin: 8, backgroundColor: "pink" }} key={item.id}>
-      <VideoComponent itemurl={item.url} paused={index !== currentPlayingIndex} poster={item.poster} index={item.length} />
-      <View style={{ flex: 1, flexDirection: "row", height: 50, alignItems: "flex-start" }}>
-        <Image
-          source={{ uri: "https://plus.unsplash.com/premium_photo-1664392455446-1e636959468b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Ym9va3xlbnwwfHwwfHx8MA%3D%3D" }}
-          style={{ height: 50, width: 50, margin: 10, borderRadius: 50 }} />
-        <Text style={{ marginTop: 20, fontSize: 20, justifyContent: "center", marginLeft: 10, color: "white" }}>Pavan Kumar</Text>
-      </View>
-    </View>
-    <PostDescription/>
-    </>
-   
+  const renderVideoItem = ({ item, index }) => {
+    const urlLowerCase = item.url.toLowerCase(); 
+    const isImage = imageExtensions.some((ext) => urlLowerCase.endsWith(`${ext}`))
+    const isVideo = videoExtensions.some((ext) => urlLowerCase.endsWith(`${ext}`))
+return (
+      <>
+      {isVideo ?
+        <View style={{ height: videoComponentHeight, padding: 0, margin: 8, backgroundColor: "pink"}} key={item.id}>
+         <VideoComponent itemurl={item.url} paused={index !== currentPlayingIndex} poster={item.poster} index={item.length} />
+          <View style={{ flex: 1, flexDirection: "row", height: 50, alignItems: "flex-start",position:"absolute" }}>
+            <Image
+              source={{ uri: "https://plus.unsplash.com/premium_photo-1664392455446-1e636959468b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Ym9va3xlbnwwfHwwfHx8MA%3D%3D" }}
+              style={{ height: 50, width: 50, margin: 10, borderRadius: 50 }} />
+            <Text style={{ marginTop: 20, fontSize: 20, justifyContent: "center", marginLeft: 10, color: "white" }}>Pavan Kumar</Text>
+          </View>
+        </View>: 
+        <><Image
+        source={{ uri: item.url }}
+        style={{ height: screenHeight * 0.6, width: "100%" }} /><View style={{ flex: 1, flexDirection: "row", height: 50, alignItems: "flex-start", position: "absolute" }}>
+          <Image
+            source={{ uri: "https://buffer.com/cdn-cgi/image/w=1000,fit=contain,q=90,f=auto/library/content/images/size/w600/2023/10/free-images.jpg" }}
+            style={{ height: 50, width: 50, margin: 10, borderRadius: 50 }} />
+          <Text style={{ marginTop: 20, fontSize: 20, justifyContent: "center", marginLeft: 10, color: "white" }}>Pavan Kumar</Text>
+        </View></>}
+        <PostDescription />
+      </>
+    );
+  };
   
-  );
-
   return (
     <>
       <View style={styles.container}>
-        <Icon name="plus-square-o" size={30} color="black" />
+        <Icon name="plus-square-o" size={30} color="black" onPress={()=>navigation.navigate("UPLOADPOST")}/>
         <Text style={{ fontWeight: 'bold', fontSize: 30 }}>Instagram</Text>
         <View style={{ flexDirection: 'row' }}>
           <Vector name="brightness-6" size={30} color="black" />
@@ -54,7 +69,7 @@ export default function App( {navigation}) {
         </View>
       </View>
       
-      <Stories navigation={navigation}/>
+      <Stories navigation={navigation} />
     
       <FlatList
       ref={flatListRef}
@@ -68,9 +83,9 @@ export default function App( {navigation}) {
   />
 
       <View style={styles.below}>
-        <Icon name="home" size={30} color="black" />
+        <Icon name="home" size={30} color="black"  onPress={()=>navigation.navigate("HOME")}/>
         <Vector name="search" size={30} color="black" />
-        <Vector name="video-library" size={30} color="black" />
+        <Vector name="video-library" size={30} color="black"  onPress={()=>navigation.navigate("UPLOADPOST")}/>
         <Icon name="heart-o" size={30} color="black" />
         <Icon name="product-hunt" size={30} color="black"  onPress={() => navigation.navigate('PROFILE')}/>
       </View>
